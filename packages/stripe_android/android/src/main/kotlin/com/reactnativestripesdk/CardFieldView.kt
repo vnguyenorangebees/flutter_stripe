@@ -93,7 +93,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
 
     textColor?.let {
       for (editTextBinding in bindings) {
-        editTextBinding.setTextColor(Color.parseColor(it))
+        editTextBinding.setErrorColor(Color.parseColor(it))
       }
     }
     textErrorColor?.let {
