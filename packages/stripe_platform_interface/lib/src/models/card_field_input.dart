@@ -93,6 +93,7 @@ class CardFormStyle with _$CardFormStyle {
 
   CardFormStyle apply(CardFormStyle? style) => copyWith(
         backgroundColor: style?.backgroundColor ?? backgroundColor,
+
       );
 }
 

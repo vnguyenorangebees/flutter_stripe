@@ -79,7 +79,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderColor = getValOr(value, "borderColor", null)
     val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
-    val textColor = getValOr("0xff000000", "textColor", null)
+    val textColor = getValOr("value", "textColor", null)
     val fontSize = getIntOrNull(value, "fontSize")
     val fontFamily = getValOr(value, "fontFamily")
     val placeholderColor = getValOr(value, "placeholderColor", null)
