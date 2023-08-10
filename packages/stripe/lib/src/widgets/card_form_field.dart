@@ -19,12 +19,11 @@ class CardFormField extends StatefulWidget {
       Key? key,
       this.onFocus,
       this.enablePostalCode = true,
-      this.backgroundColor,
       this.autofocus = false,
       this.dangerouslyGetFullCardDetails = false,
       this.dangerouslyUpdateFullCardDetails = false,
       this.controller,
-      this.textColor})
+      this.style})
       : super(key: key);
 
   /// Callback that will be executed when a specific field gets focus.
@@ -34,9 +33,7 @@ class CardFormField extends StatefulWidget {
   final CardChangedCallback? onCardChanged;
 
   /// Background color of the card form
-  final Color? backgroundColor;
-
-  final Color? textColor;
+  final CardFormStyle? style;
 
   /// Whether or not to show the postalcode field in the form.
   /// Defaults is `true`. If your configuration in Stripe requires a postalcode
@@ -178,8 +175,8 @@ class _CardFormFieldState extends State<CardFormField> {
   }
 
   CardFormStyle effectiveCardStyle() {
-    return CardFormStyle(
-        backgroundColor: widget.backgroundColor, textColor: widget.textColor);
+    return widget.style ??
+        CardFormStyle(backgroundColor: Colors.white, textColor: Colors.black);
   }
 }
 
