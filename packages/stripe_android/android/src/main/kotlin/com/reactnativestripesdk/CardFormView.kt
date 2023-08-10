@@ -161,7 +161,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
         shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
       }
       borderWidth?.let {
-        shape.strokeWidth = it.toDouble()
+        shape.strokeWidth = it
       }
     }
   }
