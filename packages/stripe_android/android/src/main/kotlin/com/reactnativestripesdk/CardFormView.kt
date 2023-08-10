@@ -104,9 +104,96 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   fun setCardStyle(value: ReadableMap) {
     val binding = StripeCardFormViewBinding.bind(cardForm)
     val backgroundColor = getValOr(value, "backgroundColor", null)
+    val borderWidth = getIntOrNull(value, "borderWidth")
+    val backgroundColor = getValOr(value, "backgroundColor", null)
+    val borderColor = getValOr(value, "borderColor", null)
+    val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
+    val textColor = getValOr(value, "textColor", null)
+    val fontSize = getIntOrNull(value, "fontSize")
+    val fontFamily = getValOr(value, "fontFamily")
+    val placeholderColor = getValOr(value, "placeholderColor", null)
+    val textErrorColor = getValOr(value, "textErrorColor", null)
+    val cursorColor = getValOr(value, "cursorColor", null)
+    val bindings = setOf(
+            cardInputWidgetBinding.cardNumberEditText,
+            cardInputWidgetBinding.cvcEditText,
+            cardInputWidgetBinding.expiryDateEditText,
+            cardInputWidgetBinding.postalCodeEditText)
 
-    binding.cardMultilineWidgetContainer.background = MaterialShapeDrawable().also { shape ->
+    textColor?.let {
+      for (editTextBinding in bindings) {
+        editTextBinding.setTextColor(Color.parseColor(it))
+      }
+    }
+    textErrorColor?.let {
+      for (editTextBinding in bindings) {
+        editTextBinding.setErrorColor(Color.parseColor(it))
+      }
+    }
+    placeholderColor?.let {
+      for (editTextBinding in bindings) {
+        editTextBinding.setHintTextColor(Color.parseColor(it))
+      }
+    }
+    fontSize?.let {
+      for (editTextBinding in bindings) {
+        editTextBinding.textSize = it.toFloat()
+      }
+    }
+    fontFamily?.let {
+      for (editTextBinding in bindings) {
+        editTextBinding.typeface = Typeface.create(it, Typeface.NORMAL)
+      }
+    }
+    cursorColor?.let {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        val color = Color.parseColor(it)
+        for (editTextBinding in bindings) {
+          editTextBinding.textCursorDrawable?.setTint(color)
+          editTextBinding.textSelectHandle?.setTint(color)
+          editTextBinding.textSelectHandleLeft?.setTint(color)
+          editTextBinding.textSelectHandleRight?.setTint(color)
+          editTextBinding.highlightColor = color
+        }
+      }
+    }
+
+    mCardWidget.setPadding(40, 0, 40, 0)
+    mCardWidget.background = MaterialShapeDrawable(
+            ShapeAppearanceModel()
+                    .toBuilder()
+                    .setAllCorners(CornerFamily.ROUNDED, (borderRadius * 2).toFloat())
+                    .build()
+    ).also { shape ->
+      shape.strokeWidth = 0.0f
+      shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
       shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+      borderWidth?.let {
+        shape.strokeWidth = (it * 2).toFloat()
+      }
+      borderColor?.let {
+        shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
+      backgroundColor?.let {
+        shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
+    }
+
+    cardFormViewBinding.cardMultilineWidgetContainer.background = MaterialShapeDrawable(
+            ShapeAppearanceModel()
+                    .toBuilder()
+                    .setAllCorners(CornerFamily.ROUNDED, PixelUtil.toPixelFromDIP(borderRadius.toDouble()))
+                    .build()
+    ).also { shape ->
+      shape.strokeWidth = 0.0f
+      shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
+      shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+      borderWidth?.let {
+        shape.strokeWidth = PixelUtil.toPixelFromDIP(it.toDouble())
+      }
+      borderColor?.let {
+        shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
       backgroundColor?.let {
         shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
       }
