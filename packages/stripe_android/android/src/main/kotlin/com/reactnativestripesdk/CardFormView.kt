@@ -27,6 +27,7 @@ import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 import com.stripe.android.view.CardValidCallback
 import com.facebook.react.uimanager.PixelUtil
+import com.facebook.react.views.text.ReactTypefaceUtils
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
@@ -42,7 +43,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusable = true
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusableInTouchMode = true
 
-    (cardFormViewBinding.cardMultilineWidgetContainer.layoutParams as MarginLayoutParams).setMargins(0)
+   // (cardFormViewBinding.cardMultilineWidgetContainer.layoutParams as MarginLayoutParams).setMargins(0)
 
     addView(cardForm)
     setListeners()
