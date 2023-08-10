@@ -152,8 +152,16 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
 
     binding.cardMultilineWidgetContainer.background = MaterialShapeDrawable().also { shape ->
       shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+      shape.strokeWidth = 0.0f
+      shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
       backgroundColor?.let {
         shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
+      borderColor?.let {
+        shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
+      borderWidth?.let {
+        shape.strokeWidth = PixelUtil.toPixelFromDIP(it.toDouble())
       }
     }
   }
