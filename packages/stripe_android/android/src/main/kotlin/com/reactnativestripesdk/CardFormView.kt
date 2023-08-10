@@ -17,7 +17,6 @@ import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardFormView
 import com.stripe.android.view.CardInputListener
-import com.facebook.react.uimanager.PixelUtil
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
@@ -162,7 +161,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
         shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
       }
       borderWidth?.let {
-        shape.strokeWidth = PixelUtil.toPixelFromDIP(it.toDouble())
+        shape.strokeWidth = it.toDouble()
       }
     }
   }
