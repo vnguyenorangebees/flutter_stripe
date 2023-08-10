@@ -4,19 +4,28 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.View
 import android.view.View.OnFocusChangeListener
+import com.flutter.stripe.R
+import com.stripe.android.databinding.CardMultilineWidgetBinding
+import com.stripe.android.databinding.StripeCardFormViewBinding
+import com.stripe.android.view.CardFormView
+import android.graphics.Typeface
+import android.os.Build
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.events.EventDispatcher
-import com.flutter.stripe.R
+import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
-import com.stripe.android.databinding.CardMultilineWidgetBinding
-import com.stripe.android.databinding.StripeCardFormViewBinding
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.stripe.android.databinding.CardInputWidgetBinding
 import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
-import com.stripe.android.view.CardFormView
 import com.stripe.android.view.CardInputListener
+import com.stripe.android.view.CardInputWidget
+import com.stripe.android.view.CardValidCallback
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
@@ -103,7 +112,6 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
 
   fun setCardStyle(value: ReadableMap) {
     val binding = StripeCardFormViewBinding.bind(cardForm)
-    val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderWidth = getIntOrNull(value, "borderWidth")
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderColor = getValOr(value, "borderColor", null)
@@ -114,11 +122,6 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     val placeholderColor = getValOr(value, "placeholderColor", null)
     val textErrorColor = getValOr(value, "textErrorColor", null)
     val cursorColor = getValOr(value, "cursorColor", null)
-    val bindings = setOf(
-            cardInputWidgetBinding.cardNumberEditText,
-            cardInputWidgetBinding.cvcEditText,
-            cardInputWidgetBinding.expiryDateEditText,
-            cardInputWidgetBinding.postalCodeEditText)
 
     textColor?.let {
       for (editTextBinding in bindings) {
