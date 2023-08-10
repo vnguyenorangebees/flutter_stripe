@@ -26,6 +26,12 @@ dependency_overrides:
       path: packages/stripe_platform_interface/
       ref: v2.5.0-ob
 
+  stripe_android:
+    git:
+      url: https://github.com/vnguyenorangebees/flutter_stripe.git
+      path: packages/stripe_android/
+      ref: v2.5.0-ob
+
 
 dev_dependencies:
   flutter_test:
