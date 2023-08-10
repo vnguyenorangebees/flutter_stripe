@@ -14,6 +14,15 @@ dependencies:
   stripe_android: ^2.5.0
   stripe_ios: ^2.5.0
   stripe_platform_interface: ^2.5.0
+
+dependency_overrides:
+  stripe_platform_interface:
+    git:
+      url: https://github.com/vnguyenorangebees/flutter_stripe.git
+      path: packages/stripe_platform_interface/
+      ref: v2.5.0-ob
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
