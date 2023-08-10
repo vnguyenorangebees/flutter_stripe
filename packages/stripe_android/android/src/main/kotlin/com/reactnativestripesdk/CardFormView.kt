@@ -26,6 +26,7 @@ import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 import com.stripe.android.view.CardValidCallback
+import com.facebook.react.uimanager.PixelUtil
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
@@ -40,6 +41,8 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   init {
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusable = true
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusableInTouchMode = true
+
+    (cardFormViewBinding.cardMultilineWidgetContainer.layoutParams as MarginLayoutParams).setMargins(0)
 
     addView(cardForm)
     setListeners()
@@ -111,74 +114,75 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   }
 
   fun setCardStyle(value: ReadableMap) {
-    val binding = StripeCardFormViewBinding.bind(cardForm)
-    val borderWidth = getIntOrNull(value, "borderWidth")
     val backgroundColor = getValOr(value, "backgroundColor", null)
+    val textColor = getValOr(value, "textColor", null)
+    val borderWidth = getIntOrNull(value, "borderWidth")
     val borderColor = getValOr(value, "borderColor", null)
     val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
-    val textColor = getValOr(value, "textColor", null)
     val fontSize = getIntOrNull(value, "fontSize")
     val fontFamily = getValOr(value, "fontFamily")
     val placeholderColor = getValOr(value, "placeholderColor", null)
     val textErrorColor = getValOr(value, "textErrorColor", null)
     val cursorColor = getValOr(value, "cursorColor", null)
 
+    val editTextBindings = setOf(
+            cardFormViewBinding.cardMultilineWidget.cardNumberEditText,
+            cardFormViewBinding.cardMultilineWidget.cvcEditText,
+            cardFormViewBinding.cardMultilineWidget.expiryDateEditText,
+            cardFormViewBinding.postalCode
+    )
+    val placeholderTextBindings = setOf(
+            multilineWidgetBinding.tlExpiry,
+            multilineWidgetBinding.tlCardNumber,
+            multilineWidgetBinding.tlCvc,
+            cardFormViewBinding.postalCodeContainer,
+    )
+
     textColor?.let {
-      for (editTextBinding in bindings) {
-        editTextBinding.setTextColor(Color.parseColor(it))
+      for (binding in editTextBindings) {
+        binding.setTextColor(Color.parseColor(it))
       }
+      cardFormViewBinding.countryLayout.countryAutocomplete.setTextColor(Color.parseColor(it))
     }
     textErrorColor?.let {
-      for (editTextBinding in bindings) {
-        editTextBinding.setErrorColor(Color.parseColor(it))
+      for (binding in editTextBindings) {
+        binding.setErrorColor(Color.parseColor(it))
+        cardFormViewBinding.postalCode.setErrorColor(Color.parseColor(it))
       }
     }
     placeholderColor?.let {
-      for (editTextBinding in bindings) {
-        editTextBinding.setHintTextColor(Color.parseColor(it))
+      for (binding in placeholderTextBindings) {
+        binding.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
       }
     }
     fontSize?.let {
-      for (editTextBinding in bindings) {
-        editTextBinding.textSize = it.toFloat()
+      for (binding in editTextBindings) {
+        binding.textSize = it.toFloat()
       }
     }
     fontFamily?.let {
-      for (editTextBinding in bindings) {
-        editTextBinding.typeface = Typeface.create(it, Typeface.NORMAL)
+      // Load custom font from assets, and fallback to default system font
+      val typeface = ReactTypefaceUtils.applyStyles(null, -1, -1, it.takeIf { it.isNotEmpty() }, context.assets)
+      for (binding in editTextBindings) {
+        binding.typeface = typeface
       }
+      for (binding in placeholderTextBindings) {
+        binding.typeface = typeface
+      }
+      cardFormViewBinding.countryLayout.typeface = typeface
+      cardFormViewBinding.countryLayout.countryAutocomplete.typeface = typeface
+      cardFormViewBinding.errors.typeface = typeface
     }
     cursorColor?.let {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         val color = Color.parseColor(it)
-        for (editTextBinding in bindings) {
-          editTextBinding.textCursorDrawable?.setTint(color)
-          editTextBinding.textSelectHandle?.setTint(color)
-          editTextBinding.textSelectHandleLeft?.setTint(color)
-          editTextBinding.textSelectHandleRight?.setTint(color)
-          editTextBinding.highlightColor = color
+        for (binding in editTextBindings) {
+          binding.textCursorDrawable?.setTint(color)
+          binding.textSelectHandle?.setTint(color)
+          binding.textSelectHandleLeft?.setTint(color)
+          binding.textSelectHandleRight?.setTint(color)
+          binding.highlightColor = color
         }
-      }
-    }
-
-    mCardWidget.setPadding(40, 0, 40, 0)
-    mCardWidget.background = MaterialShapeDrawable(
-            ShapeAppearanceModel()
-                    .toBuilder()
-                    .setAllCorners(CornerFamily.ROUNDED, (borderRadius * 2).toFloat())
-                    .build()
-    ).also { shape ->
-      shape.strokeWidth = 0.0f
-      shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
-      shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
-      borderWidth?.let {
-        shape.strokeWidth = (it * 2).toFloat()
-      }
-      borderColor?.let {
-        shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
-      }
-      backgroundColor?.let {
-        shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
       }
     }
 
