@@ -40,12 +40,14 @@ _$_CardFormStyleConstructor _$$_CardFormStyleConstructorFromJson(
         Map<String, dynamic> json) =>
     _$_CardFormStyleConstructor(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
+      textColor: ColorKey.fromJson(json['textColor']),
     );
 
 Map<String, dynamic> _$$_CardFormStyleConstructorToJson(
         _$_CardFormStyleConstructor instance) =>
     <String, dynamic>{
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
+      'textColor': ColorKey.toJson(instance.textColor),
     };
 
 _$_CardPlaceholderConstructor _$$_CardPlaceholderConstructorFromJson(

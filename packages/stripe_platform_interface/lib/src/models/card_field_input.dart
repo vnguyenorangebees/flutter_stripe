@@ -84,6 +84,7 @@ class CardFormStyle with _$CardFormStyle {
         ///
         /// Make sure that there is enough contrast with the text color.
         Color? backgroundColor,
+    Color? textColor,
   }) = _CardFormStyleConstructor;
 
   factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
@@ -93,7 +94,7 @@ class CardFormStyle with _$CardFormStyle {
 
   CardFormStyle apply(CardFormStyle? style) => copyWith(
         backgroundColor: style?.backgroundColor ?? backgroundColor,
-
+        textColor: style?.textColor ?? textColor,
       );
 }
 
