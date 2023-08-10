@@ -473,11 +473,31 @@ class _$CardFormStyleTearOff {
 
   _CardFormStyleConstructor call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
-      Color? textColor}) {
+      int? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? borderColor,
+      int? borderRadius,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      int? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor}) {
     return _CardFormStyleConstructor(
       backgroundColor: backgroundColor,
+      borderWidth: borderWidth,
+      borderColor: borderColor,
+      borderRadius: borderRadius,
+      cursorColor: cursorColor,
       textColor: textColor,
+      fontSize: fontSize,
+      textErrorColor: textErrorColor,
+      placeholderColor: placeholderColor,
     );
   }
 
@@ -492,8 +512,29 @@ const $CardFormStyle = _$CardFormStyleTearOff();
 /// @nodoc
 mixin _$CardFormStyle {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor => throw _privateConstructorUsedError;
+
+  /// Width for the border.
+  int? get borderWidth => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get borderColor => throw _privateConstructorUsedError;
+
+  /// Borderradius that can give the Cardfield rounded corners.
+  int? get borderRadius => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get cursorColor => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor => throw _privateConstructorUsedError;
+
+  /// Font size.
+  int? get fontSize => throw _privateConstructorUsedError;
+
+  /// Color of the input in case incorrect data is entered.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get textErrorColor => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderColor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -508,8 +549,21 @@ abstract class $CardFormStyleCopyWith<$Res> {
       _$CardFormStyleCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
-      Color? textColor});
+      int? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? borderColor,
+      int? borderRadius,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      int? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor});
 }
 
 /// @nodoc
@@ -524,16 +578,51 @@ class _$CardFormStyleCopyWithImpl<$Res>
   @override
   $Res call({
     Object? backgroundColor = freezed,
+    Object? borderWidth = freezed,
+    Object? borderColor = freezed,
+    Object? borderRadius = freezed,
+    Object? cursorColor = freezed,
     Object? textColor = freezed,
+    Object? fontSize = freezed,
+    Object? textErrorColor = freezed,
+    Object? placeholderColor = freezed,
   }) {
     return _then(_value.copyWith(
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      borderColor: borderColor == freezed
+          ? _value.borderColor
+          : borderColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      borderRadius: borderRadius == freezed
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cursorColor: cursorColor == freezed
+          ? _value.cursorColor
+          : cursorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       textColor: textColor == freezed
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      fontSize: fontSize == freezed
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      textErrorColor: textErrorColor == freezed
+          ? _value.textErrorColor
+          : textErrorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderColor: placeholderColor == freezed
+          ? _value.placeholderColor
+          : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ));
   }
@@ -548,8 +637,21 @@ abstract class _$CardFormStyleConstructorCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
-      Color? textColor});
+      int? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? borderColor,
+      int? borderRadius,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      int? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor});
 }
 
 /// @nodoc
@@ -567,16 +669,51 @@ class __$CardFormStyleConstructorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? backgroundColor = freezed,
+    Object? borderWidth = freezed,
+    Object? borderColor = freezed,
+    Object? borderRadius = freezed,
+    Object? cursorColor = freezed,
     Object? textColor = freezed,
+    Object? fontSize = freezed,
+    Object? textErrorColor = freezed,
+    Object? placeholderColor = freezed,
   }) {
     return _then(_CardFormStyleConstructor(
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      borderColor: borderColor == freezed
+          ? _value.borderColor
+          : borderColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      borderRadius: borderRadius == freezed
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cursorColor: cursorColor == freezed
+          ? _value.cursorColor
+          : cursorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       textColor: textColor == freezed
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      fontSize: fontSize == freezed
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      textErrorColor: textErrorColor == freezed
+          ? _value.textErrorColor
+          : textErrorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderColor: placeholderColor == freezed
+          ? _value.placeholderColor
+          : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ));
   }
@@ -588,8 +725,21 @@ class __$CardFormStyleConstructorCopyWithImpl<$Res>
 class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
   _$_CardFormStyleConstructor(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.backgroundColor,
-      this.textColor})
+      this.borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.borderColor,
+      this.borderRadius,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.textColor,
+      this.fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.placeholderColor})
       : super._();
 
   factory _$_CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =>
@@ -597,13 +747,41 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? backgroundColor;
   @override
+
+  /// Width for the border.
+  final int? borderWidth;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? borderColor;
+  @override
+
+  /// Borderradius that can give the Cardfield rounded corners.
+  final int? borderRadius;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? cursorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textColor;
+  @override
+
+  /// Font size.
+  final int? fontSize;
+  @override
+
+  /// Color of the input in case incorrect data is entered.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? textErrorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? placeholderColor;
 
   @override
   String toString() {
-    return 'CardFormStyle(backgroundColor: $backgroundColor, textColor: $textColor)';
+    return 'CardFormStyle(backgroundColor: $backgroundColor, borderWidth: $borderWidth, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
   }
 
   @override
@@ -613,14 +791,34 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
             other is _CardFormStyleConstructor &&
             const DeepCollectionEquality()
                 .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor));
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth) &&
+            const DeepCollectionEquality()
+                .equals(other.borderColor, borderColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius) &&
+            const DeepCollectionEquality()
+                .equals(other.cursorColor, cursorColor) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
+            const DeepCollectionEquality()
+                .equals(other.textErrorColor, textErrorColor) &&
+            const DeepCollectionEquality()
+                .equals(other.placeholderColor, placeholderColor));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(textColor));
+      const DeepCollectionEquality().hash(borderWidth),
+      const DeepCollectionEquality().hash(borderColor),
+      const DeepCollectionEquality().hash(borderRadius),
+      const DeepCollectionEquality().hash(cursorColor),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(fontSize),
+      const DeepCollectionEquality().hash(textErrorColor),
+      const DeepCollectionEquality().hash(placeholderColor));
 
   @JsonKey(ignore: true)
   @override
@@ -637,8 +835,21 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
 abstract class _CardFormStyleConstructor extends CardFormStyle {
   factory _CardFormStyleConstructor(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
-      Color? textColor}) = _$_CardFormStyleConstructor;
+      int? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? borderColor,
+      int? borderRadius,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      int? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor}) = _$_CardFormStyleConstructor;
   _CardFormStyleConstructor._() : super._();
 
   factory _CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =
@@ -646,9 +857,37 @@ abstract class _CardFormStyleConstructor extends CardFormStyle {
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor;
   @override
+
+  /// Width for the border.
+  int? get borderWidth;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get borderColor;
+  @override
+
+  /// Borderradius that can give the Cardfield rounded corners.
+  int? get borderRadius;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get cursorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor;
+  @override
+
+  /// Font size.
+  int? get fontSize;
+  @override
+
+  /// Color of the input in case incorrect data is entered.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get textErrorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderColor;
   @override
   @JsonKey(ignore: true)
   _$CardFormStyleConstructorCopyWith<_CardFormStyleConstructor> get copyWith =>

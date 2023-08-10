@@ -79,12 +79,41 @@ class CardFormStyle with _$CardFormStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
         /// Background color of the cardformfield
         ///
         /// Make sure that there is enough contrast with the text color.
         Color? backgroundColor,
-    Color? textColor,
+
+    /// Width for the border.
+    int? borderWidth,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Border color of the cardfield.
+        Color? borderColor,
+
+    /// Borderradius that can give the Cardfield rounded corners.
+    int? borderRadius,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Cursor color when the card has focus.
+        Color? cursorColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the typed text on the Card fuekd.
+        Color? textColor,
+
+    /// Font size.
+    int? fontSize,
+
+    /// Color of the input in case incorrect data is entered.
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? textErrorColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the placeholder text.
+        Color? placeholderColor,
   }) = _CardFormStyleConstructor;
 
   factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
@@ -94,7 +123,14 @@ class CardFormStyle with _$CardFormStyle {
 
   CardFormStyle apply(CardFormStyle? style) => copyWith(
         backgroundColor: style?.backgroundColor ?? backgroundColor,
+        borderWidth: style?.borderWidth ?? borderWidth,
+        borderColor: style?.borderColor ?? borderColor,
+        borderRadius: style?.borderRadius ?? borderRadius,
+        cursorColor: style?.cursorColor ?? cursorColor,
         textColor: style?.textColor ?? textColor,
+        fontSize: style?.fontSize ?? fontSize,
+        textErrorColor: style?.textErrorColor ?? textErrorColor,
+        placeholderColor: style?.placeholderColor ?? placeholderColor,
       );
 }
 

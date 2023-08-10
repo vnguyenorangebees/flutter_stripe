@@ -40,14 +40,28 @@ _$_CardFormStyleConstructor _$$_CardFormStyleConstructorFromJson(
         Map<String, dynamic> json) =>
     _$_CardFormStyleConstructor(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
+      borderWidth: json['borderWidth'] as int?,
+      borderColor: ColorKey.fromJson(json['borderColor']),
+      borderRadius: json['borderRadius'] as int?,
+      cursorColor: ColorKey.fromJson(json['cursorColor']),
       textColor: ColorKey.fromJson(json['textColor']),
+      fontSize: json['fontSize'] as int?,
+      textErrorColor: ColorKey.fromJson(json['textErrorColor']),
+      placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );
 
 Map<String, dynamic> _$$_CardFormStyleConstructorToJson(
         _$_CardFormStyleConstructor instance) =>
     <String, dynamic>{
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
+      'borderWidth': instance.borderWidth,
+      'borderColor': ColorKey.toJson(instance.borderColor),
+      'borderRadius': instance.borderRadius,
+      'cursorColor': ColorKey.toJson(instance.cursorColor),
       'textColor': ColorKey.toJson(instance.textColor),
+      'fontSize': instance.fontSize,
+      'textErrorColor': ColorKey.toJson(instance.textErrorColor),
+      'placeholderColor': ColorKey.toJson(instance.placeholderColor),
     };
 
 _$_CardPlaceholderConstructor _$$_CardPlaceholderConstructorFromJson(
@@ -101,9 +115,10 @@ Map<String, dynamic> _$$_CardFieldInputDetailsToJson(
       'brand': instance.brand,
       'number': instance.number,
       'cvc': instance.cvc,
-      'validExpiryDate': _$CardValidationStateEnumMap[instance.validExpiryDate],
-      'validCVC': _$CardValidationStateEnumMap[instance.validCVC],
-      'validNumber': _$CardValidationStateEnumMap[instance.validNumber],
+      'validExpiryDate':
+          _$CardValidationStateEnumMap[instance.validExpiryDate]!,
+      'validCVC': _$CardValidationStateEnumMap[instance.validCVC]!,
+      'validNumber': _$CardValidationStateEnumMap[instance.validNumber]!,
     };
 
 const _$CardValidationStateEnumMap = {
