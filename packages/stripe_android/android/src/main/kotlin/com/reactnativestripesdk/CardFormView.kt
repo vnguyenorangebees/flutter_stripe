@@ -17,6 +17,7 @@ import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardFormView
 import com.stripe.android.view.CardInputListener
+import com.facebook.react.uimanager.PixelUtil
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
